@@ -11,6 +11,28 @@
 #include "udf.h"
 #include "str.h"
 
+
+/* Doulbe an int value */
+static str
+UDFdoubleit_(int *dst, const int *src)
+{
+    *dst = *src << 1;
+    return MAL_SUCCEED;
+}
+
+/* MAL wrapper */
+str
+UDFdoubleit(int *res, const int *arg) {
+    str msg = MAL_SUCCEED;
+    int s;
+    assert(res && arg);
+    s = *arg;
+    if ((msg = UDFdoubleit_(res, &s)) != MAL_SUCCEED) {
+        return msg;
+    }
+    return msg;
+}
+
 /* Reverse a string */
 
 /* actual implementation */
@@ -414,6 +436,8 @@ static mel_func udf_init_funcs[] = {
  command("batudf", "fuse", UDFBATfuse, false, "fuse two (1-byte) bte values into one (2-byte) sht value", args(1,3, batarg("",sht),batarg("one",bte),batarg("two",bte))),
  command("batudf", "fuse", UDFBATfuse, false, "fuse two (2-byte) sht values into one (4-byte) int value", args(1,3, batarg("",int),batarg("one",sht),batarg("two",sht))),
  command("batudf", "fuse", UDFBATfuse, false, "fuse two (4-byte) int values into one (8-byte) lng value", args(1,3, batarg("",lng),batarg("one",int),batarg("two",int))),
+ //FIXME: register the UDFdoubleit function
+ command("udf", "doubleit", UDFdoubleit, false, "Double an int", args(1,2, arg("", int), arg("one", int))),
 #ifdef HAVE_HGE
  command("udf", "fuse", UDFfuse_lng_hge, false, "fuse two (8-byte) lng values into one (16-byte) hge value", args(1,3, arg("",hge),arg("one",lng),arg("two",lng))),
  command("batudf", "fuse", UDFBATfuse, false, "fuse two (8-byte) lng values into one (16-byte) hge value", args(1,3, batarg("",hge),batarg("one",lng),batarg("two",lng))),

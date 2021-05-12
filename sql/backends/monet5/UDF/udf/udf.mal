@@ -7,6 +7,12 @@
 # scalar MAL signatures
 module udf;
 
+# double an integer
+command doubleit(one:int):int
+address UDFdoubleit
+comment "Double an integer";
+
+
 command reverse(ra1:str):str
 address UDFreverse
 comment "Reverse a string";

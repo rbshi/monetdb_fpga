@@ -6,6 +6,10 @@
 
 -- add function signatures to SQL catalog
 
+-- Double an integer
+create function doubleit(one integer)
+returns integer external name udf.doubleit;
+
 
 -- Reverse a string
 create function reverse(src string)
