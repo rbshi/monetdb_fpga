@@ -5,8 +5,8 @@ find_package(Vitis)
 
 # Platform
 set(DSA_NAME "xilinx_u280_xdma_201920_3" CACHE STRING "DSA string for v++/xocc.")
-set(HOST_NAME "hbm_bw" CACHE STRING "Host executable name.")
-set(KERNEL_NAME "krnl_vaddmul" CACHE STRING "Host executable name.")
+#set(HOST_NAME "hbm_bw" CACHE STRING "Host executable name.")
+set(KERNEL_NAME "krnl_fpga_op" CACHE STRING "Host executable name.")
 
 # Common src and head that comes with Xilinx VITIS example
 set(OCL_COMMON_SRC ${CMAKE_CURRENT_SOURCE_DIR}/common/includes/xcl2/xcl2.cpp)
