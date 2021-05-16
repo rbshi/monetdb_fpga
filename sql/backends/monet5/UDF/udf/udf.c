@@ -11,7 +11,9 @@
 #include "udf.h"
 #include "str.h"
 
-#include "fpga_op.h"
+#ifdef _cplusplus
+#include "fpga_op.hpp"
+#endif
 
 ///* Doulbe an int value */
 //static str
