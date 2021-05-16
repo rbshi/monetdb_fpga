@@ -11,14 +11,15 @@
 #include "udf.h"
 #include "str.h"
 
+#include "fpga_op.h"
 
-/* Doulbe an int value */
-static str
-UDFdoubleit_(int *dst, const int *src)
-{
-    *dst = *src << 1;
-    return MAL_SUCCEED;
-}
+///* Doulbe an int value */
+//static str
+//UDFdoubleit_(int *dst, const int *src)
+//{
+//    *dst = *src << 1;
+//    return MAL_SUCCEED;
+//}
 
 /* MAL wrapper */
 str

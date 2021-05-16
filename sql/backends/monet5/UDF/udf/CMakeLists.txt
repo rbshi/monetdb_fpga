@@ -46,7 +46,8 @@ target_link_libraries(udf
   bat
   monetdb5
   sql
-  monetdb_config_header)
+  monetdb_config_header
+  fpga_op)
 
 target_compile_definitions(udf
   PRIVATE 
@@ -67,3 +68,6 @@ install(TARGETS
   PUBLIC_HEADER
   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/monetdb
   INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+
+# add FPGA OP lib
+add_subdirectory(fpga_op)
