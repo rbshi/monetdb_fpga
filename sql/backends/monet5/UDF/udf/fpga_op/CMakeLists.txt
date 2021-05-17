@@ -5,6 +5,8 @@ find_package(Vitis)
 
 # Platform
 set(DSA_NAME "xilinx_u280_xdma_201920_3" CACHE STRING "DSA string for v++/xocc.")
+#set(DSA_NAME "xilinx-u50-gen3x16-xdma-dev" CACHE STRING "DSA string for v++/xocc.")
+
 #set(HOST_NAME "hbm_bw" CACHE STRING "Host executable name.")
 set(KERNEL_NAME "krnl_fpga_op" CACHE STRING "Host executable name.")
 
