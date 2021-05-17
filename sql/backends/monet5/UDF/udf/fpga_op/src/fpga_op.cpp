@@ -55,7 +55,7 @@ str UDFdoubleit_(int *dst, const int *src)
     unsigned int dataSize = 1;
 
     //FIXME: fix the xclbin name
-        std::string binaryFile = "/home/runshi/Workspace/fpl20ext/MonetDB/build/build_dir.hw_emu.xilinx_u280_xdma_201920_3/krnl_fpga_op.xclbin";
+        std::string binaryFile = "krnl_fpga_op.xclbin";
     cl_int err;
     cl::CommandQueue q;
     std::string krnl_name = "krnl_fpga_op";

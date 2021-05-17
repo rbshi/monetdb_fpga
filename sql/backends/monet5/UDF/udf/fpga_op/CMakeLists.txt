@@ -10,6 +10,8 @@ set(DSA_NAME "xilinx_u280_xdma_201920_3" CACHE STRING "DSA string for v++/xocc."
 #set(HOST_NAME "hbm_bw" CACHE STRING "Host executable name.")
 set(KERNEL_NAME "krnl_fpga_op" CACHE STRING "Host executable name.")
 
+set(DB_DIR "~/Workspace/fpl20ext/test_db" CACHE PATH "Root path of db, the fpga bin (.xclbin) will be copied to.")
+
 # Common src and head that comes with Xilinx VITIS example
 set(OCL_COMMON_SRC ${CMAKE_CURRENT_SOURCE_DIR}/common/includes/xcl2/xcl2.cpp)
 set(OCL_COMMON_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/common/includes/xcl2)
@@ -89,12 +91,15 @@ add_custom_command(
 
 add_custom_target(sw_emu
     COMMENT "Build for software simulation."
+    COMMAND cp ${CMAKE_BINARY_DIR}/build_dir.sw_emu.${DSA_NAME}/${KERNEL_NAME}.xclbin ${DB_DIR}/
     DEPENDS ${CMAKE_BINARY_DIR}/emconfig.json
             ${CMAKE_BINARY_DIR}/build_dir.sw_emu.${DSA_NAME}/${KERNEL_NAME}.xclbin)
 add_custom_target(hw_emu
     COMMENT "Build for hardware simulation."
+    COMMAND cp ${CMAKE_BINARY_DIR}/build_dir.hw_emu.${DSA_NAME}/${KERNEL_NAME}.xclbin ${DB_DIR}/
     DEPENDS ${CMAKE_BINARY_DIR}/emconfig.json
             ${CMAKE_BINARY_DIR}/build_dir.hw_emu.${DSA_NAME}/${KERNEL_NAME}.xclbin)
 add_custom_target(hw
     COMMENT "Build hardware."
+    COMMAND cp ${CMAKE_BINARY_DIR}/build_dir.hw.${DSA_NAME}/${KERNEL_NAME}.xclbin ${DB_DIR}/
     DEPENDS ${CMAKE_BINARY_DIR}/build_dir.hw.${DSA_NAME}/${KERNEL_NAME}.xclbin)

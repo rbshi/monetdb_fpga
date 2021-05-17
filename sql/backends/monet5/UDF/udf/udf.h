@@ -28,7 +28,7 @@
 #endif
 
 /* export MAL wrapper functions */
-
+udf_export str UDFdoubleit(int *res, const int *arg);
 udf_export str UDFreverse(str *ret, const str *arg);
 udf_export str UDFBATreverse(bat *ret, const bat *arg);
 
